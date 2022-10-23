@@ -6,7 +6,7 @@ using WebPWrapper;
 
 namespace Sushi_DL
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {        
         string listLink = "https://sushiscan.su/manga/list-mode/";
 
@@ -20,7 +20,7 @@ namespace Sushi_DL
         public static List<string> selectedVolumes = new();
         public static List<string> selectedChapters = new();
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -115,18 +115,26 @@ namespace Sushi_DL
             }
 
             ///Add genre
-            foreach (HtmlNode a in doc.DocumentNode.SelectNodes("//span[@class='mgen']"))
+            if (doc.DocumentNode.SelectNodes("//span[@class='mgen']") != null)
             {
-                genreLabel1.Text = a.FirstChild.InnerText;
+                foreach (HtmlNode a in doc.DocumentNode.SelectNodes("//span[@class='mgen']"))
+                {
+                    genreLabel1.Text = a.FirstChild.InnerText;
 
-                if (a.ChildNodes.Count > 1)
-                {
-                    genreLabel2.Text = a.LastChild.InnerText;
+                    if (a.ChildNodes.Count > 1)
+                    {
+                        genreLabel2.Text = a.LastChild.InnerText;
+                    }
+                    else
+                    {
+                        genreLabel2.Text = string.Empty;
+                    }
                 }
-                else
-                {
-                    genreLabel2.Text = string.Empty;
-                }
+            }
+            else
+            {
+                genreLabel1.Text = string.Empty;
+                genreLabel2.Text = string.Empty;
             }
 
             ///Add synopsis
@@ -240,7 +248,7 @@ namespace Sushi_DL
                 }
             }
 
-            var form2 = new Form2();
+            var form2 = new DownloadList();
             form2.Show();
         }
     }

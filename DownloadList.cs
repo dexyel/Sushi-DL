@@ -10,20 +10,20 @@ using System.Windows.Forms;
 
 namespace Sushi_DL
 {
-    public partial class Form2 : Form
+    public partial class DownloadList : Form
     {
-        public Form2()
+        public DownloadList()
         {
             InitializeComponent();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         { 
-            if (Form1.selectedVolumes.Count != 0)
+            if (MainForm.selectedVolumes.Count != 0)
             {
-                for (var i = 0; i < Form1.selectedVolumes.Count; i++)
+                for (var i = 0; i < MainForm.selectedVolumes.Count; i++)
                 {
-                    listBox1.Items.Add(Form1.selectedVolumes[i]);
+                    listBox1.Items.Add(MainForm.selectedVolumes[i]);
                 }
             }
         }

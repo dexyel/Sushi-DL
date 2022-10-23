@@ -1,6 +1,6 @@
 ﻿namespace Sushi_DL
 {
-    partial class Form2
+    partial class DownloadList
     {
         /// <summary>
         /// Required designer variable.
