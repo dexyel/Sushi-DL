@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Net;
 using System.Web;
 using HtmlAgilityPack;
@@ -43,8 +44,7 @@ namespace Sushi_DL
                     string s = li.InnerText;
                     string a = HttpUtility.HtmlDecode(s);
 
-                    titleBox.Items.Add(a);
-                    
+                    titleBox.Items.Add(a);                    
                     titles.Add(a);
                 }
             }
@@ -155,7 +155,14 @@ namespace Sushi_DL
                 {
                     if (li.OuterHtml.Contains("Volume"))
                     {
-                        volumeBox.Items.Add(li.GetAttributeValue("data-num", string.Empty));
+                        var tmp = new List<string>();
+
+                        tmp.Add(li.GetAttributeValue("data-num", string.Empty));
+
+                        for (var i = 0; i < tmp.Count; i++)
+                        {
+                            volumeBox.Items.Insert(i, tmp[i]);                            
+                        }
                     }
 
                     if (li.OuterHtml.Contains("Chapitre"))
