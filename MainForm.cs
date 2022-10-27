@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Web;
 using HtmlAgilityPack;
@@ -11,11 +13,9 @@ namespace Sushi_DL
         string listLink = "https://sushiscan.su/manga/list-mode/";
 
         Dictionary<string, string> _mangasUrl = new();
-        Dictionary<string, string> _volumes = new();
-        Dictionary<string, string> _chapters = new();
 
         List<string> titles = new();
-        List<string> urls = new();
+        List<string> titlesUrl = new();
 
         public static List<string> selectedVolumes = new();
         public static List<string> selectedChapters = new();
@@ -52,13 +52,13 @@ namespace Sushi_DL
             ///Add urls to list
             foreach (HtmlNode href in doc.DocumentNode.SelectNodes("//div[5]//li/a[@href]"))
             {
-                urls.Add(href.GetAttributeValue("href", string.Empty));
+                titlesUrl.Add(href.GetAttributeValue("href", string.Empty));
             }
 
             ///Combine titles and urls to dictionary
             for (var i = 0; i < titles.Count; i++)
             {
-                _mangasUrl.Add(titles[i], urls[i]);
+                _mangasUrl.Add(titles[i], titlesUrl[i]);
             }
         }
 
@@ -80,13 +80,13 @@ namespace Sushi_DL
 
                     titleLabel.Text = a;
                 }
-            }            
+            }
 
             ///Add cover
             foreach (HtmlNode src in doc.DocumentNode.SelectNodes("//div[@class='thumb']/img"))
             {
                 if (src.NodeType == HtmlNodeType.Element)
-                {   
+                {
                     ///Decode and display WebP
                     if (src.OuterHtml.Contains(".webp"))
                     {
@@ -110,7 +110,7 @@ namespace Sushi_DL
                     else
                     {
                         coverBox.Load(src.GetAttributeValue("src", string.Empty));
-                    }                    
+                    }
                 }
             }
 
@@ -157,19 +157,19 @@ namespace Sushi_DL
             }
 
             ///Add volumes and chapters to dedicated boxes
-            foreach (var li in doc.DocumentNode.SelectNodes("//div[@id='chapterlist']/ul//li"))
+            foreach (HtmlNode li in doc.DocumentNode.SelectNodes("//div[@id='chapterlist']/ul//li"))
             {
                 if (li.NodeType == HtmlNodeType.Element)
                 {
                     if (li.OuterHtml.Contains("Volume"))
                     {
-                        var tmp = new List<string>();
+                        var tmpListVolumes = new List<string>();
 
-                        tmp.Add(li.GetAttributeValue("data-num", string.Empty));
+                        tmpListVolumes.Add(li.GetAttributeValue("data-num", string.Empty));
 
-                        for (var i = 0; i < tmp.Count; i++)
+                        for (var i = 0; i < tmpListVolumes.Count; i++)
                         {
-                            volumeBox.Items.Insert(i, tmp[i]);                            
+                            volumeBox.Items.Insert(i, tmpListVolumes[i]);
                         }
                     }
 
@@ -179,7 +179,7 @@ namespace Sushi_DL
                     }
                 }
             }
-        }
+        }        
 
         private void titleBox_SelectedIndexChanged(object sender, EventArgs e)
         {
