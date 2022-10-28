@@ -24,6 +24,7 @@ namespace Sushi_DL
                 for (var i = 0; i < MainForm.selectedVolumes.Count; i++)
                 {
                     listBox1.Items.Add(MainForm.selectedVolumes[i]);
+                    listBox2.Items.Add(MainForm.selectedVolumesUrl[i]);
                 }
             }            
         }

@@ -21,7 +21,9 @@ namespace Sushi_DL
         List<string> titlesUrl = new();
 
         public static List<string> selectedVolumes = new();
+        public static List<string> selectedVolumesUrl = new();
         public static List<string> selectedChapters = new();
+        public static List<string> selectedChaptersUrl = new();
 
         public MainForm()
         {
@@ -271,7 +273,9 @@ namespace Sushi_DL
         private void downloadButton_Click(object sender, EventArgs e)
         {
             selectedVolumes.Clear();
+            selectedVolumesUrl.Clear();
             selectedChapters.Clear();
+            selectedChaptersUrl.Clear();
 
             if (volumeRadio.Checked)
             {
@@ -279,7 +283,8 @@ namespace Sushi_DL
 
                 foreach (var item in selected)
                 {
-                    selectedVolumes.Add(item.ToString());
+                    selectedVolumes.Add(titleLabel.Text + " - " +  item.ToString());
+                    selectedVolumesUrl.Add(_volumesUrl[item.ToString()]);
                 }
             }
 
