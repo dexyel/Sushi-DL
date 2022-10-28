@@ -176,7 +176,7 @@ namespace Sushi_DL
                         {
                             volumeBox.Items.Insert(i, tmpListVolumes[i]);
                             _volumesUrl.Add(tmpListVolumes[i], tmpVolumesUrl[i]);
-                        }
+                        }                        
                     }
 
                     if (li.OuterHtml.Contains("Chapitre"))
@@ -195,6 +195,22 @@ namespace Sushi_DL
                     }
                 }
             }
+            #region Debug Dictionnaires URL (Volume/Chapitre)
+            /*
+            foreach (var kvp in _volumesUrl)
+            {
+                Debug.WriteLine("Key = {0}, value = {1}", kvp.Key, kvp.Value);
+            }
+
+            if (_chaptersUrl.Count != 0)
+            {
+                foreach (var kvp in _chaptersUrl)
+                {
+                    Debug.WriteLine("Key = {0}, value = {1}", kvp.Key, kvp.Value);
+                }
+            }
+            */
+            #endregion
         }
 
         private void titleBox_SelectedIndexChanged(object sender, EventArgs e)
