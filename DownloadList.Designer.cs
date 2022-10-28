@@ -30,7 +30,6 @@
         {
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // listBox1
@@ -40,35 +39,24 @@
             this.listBox1.Location = new System.Drawing.Point(12, 12);
             this.listBox1.MultiColumn = true;
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(130, 424);
+            this.listBox1.Size = new System.Drawing.Size(391, 424);
             this.listBox1.TabIndex = 0;
             // 
             // listBox2
             // 
             this.listBox2.FormattingEnabled = true;
             this.listBox2.ItemHeight = 15;
-            this.listBox2.Location = new System.Drawing.Point(148, 12);
+            this.listBox2.Location = new System.Drawing.Point(409, 12);
             this.listBox2.MultiColumn = true;
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(318, 424);
+            this.listBox2.Size = new System.Drawing.Size(414, 424);
             this.listBox2.TabIndex = 0;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 15;
-            this.listBox3.Location = new System.Drawing.Point(471, 12);
-            this.listBox3.MultiColumn = true;
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(318, 424);
-            this.listBox3.TabIndex = 0;
             // 
             // DownloadList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(835, 448);
-            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
             this.Name = "DownloadList";
@@ -82,6 +70,5 @@
 
         private ListBox listBox1;
         private ListBox listBox2;
-        private ListBox listBox3;
     }
 }

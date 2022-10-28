@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.titleBox = new System.Windows.Forms.ListBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.coverBox = new System.Windows.Forms.PictureBox();
@@ -53,6 +54,7 @@
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.downloadButton = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.coverBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -312,7 +314,7 @@
             this.downloadButton.UseVisualStyleBackColor = true;
             this.downloadButton.Click += new System.EventHandler(this.downloadButton_Click);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -332,7 +334,8 @@
             this.Controls.Add(this.coverBox);
             this.Controls.Add(this.titleLabel);
             this.Controls.Add(this.titleBox);
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Name = "MainForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.coverBox)).EndInit();
@@ -373,5 +376,6 @@
         private CheckBox checkBox2;
         private CheckBox checkBox1;
         private Button downloadButton;
+        private ToolTip toolTip1;
     }
 }
